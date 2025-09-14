@@ -1,0 +1,41 @@
+// Font
+$font-path: '/fonts';
+
+$font-family-default: 'Jost';
+$font-family-fallback: 'Arial', 'Helvetica', sans-serif;
+$font-family-primary: $font-family-default, $font-family-fallback;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-extrabold: 800;
+
+// Color
+// $primary: #2f99cb;
+$primary: #6ed2ee;
+
+$bg-color-primary: #ffffff;
+$bg-color-secondary: #0a0b1e;
+
+$txt-col-primary: #0a0b1e;
+$txt-col-secondary: $bg-color-primary;
+
+$border-col-primary: #0a0b1e;
+
+// Breakpoints
+$screen-tablet: '(max-width: 1024px)';
+$screen-mobile: '(max-width: 768px)';
+
+// Sizes
+$container-width-desktop: 1270px;
+
+$container-padding-x-desktop: 20px;
+$container-padding-x-tablet: 20px;
+$container-padding-x-mobile: 20px;
+
+// Icon
+$icon-size-big: 30px;
+$icon-size-medium: 22px;
+
+// Z

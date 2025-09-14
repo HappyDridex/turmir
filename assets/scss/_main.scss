@@ -1,0 +1,13 @@
+@import './base/generic';
+@import './base/fonts';
+@import './base/animations';
+
+// Plugins
+@import 'element-plus/dist/index.css';
+
+// components
+// @import "./components/element-plus";
+
+.b {
+  border: 3px red solid;
+}

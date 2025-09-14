@@ -1,0 +1,212 @@
+@use 'sass:map' as map;
+
+@mixin font-face($family, $weight, $style, $path) {
+  @font-face {
+    font-family: '#{$family}';
+    font-weight: $weight;
+    font-style: $style;
+    src: url('#{$font-path}/#{$path}.ttf') format('truetype');
+  }
+}
+
+// breakpoints
+@mixin md {
+  @media #{$screen-tablet} {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media #{$screen-mobile} {
+    @content;
+  }
+}
+
+// text
+@mixin text-ellipsis {
+  display: inline-block;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+}
+
+@mixin line-clamp($lines) {
+  display: -webkit-box;
+
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+// hover
+@mixin mouse-hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// styles
+@mixin border($width, $color) {
+  box-shadow: 0 0 0 $width $color inset;
+}
+
+// object-fit
+@mixin object-contain-full {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@mixin object-cover-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// transition
+@mixin base-transition($prop: all, $dur: 200ms) {
+  transition: $prop $dur ease;
+}
+
+@mixin scale-on-hover {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  @include mouse-hover {
+    transform: scale(1.1);
+  }
+}
+
+@mixin loader($size: 24px, $col: currentColor) {
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  position: relative;
+
+  &::after {
+    @include flex-all-center;
+
+    position: absolute;
+    inset: calc(50% - $size / 2);
+
+    display: inline-block;
+
+    content: '';
+    animation: rotation 2s linear infinite;
+
+    border: 5px dotted $col;
+    border-radius: 50%;
+  }
+}
+
+// position
+@mixin position-stretch($pos: absolute, $z: 1) {
+  position: $pos;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: $z;
+}
+
+//padding
+@mixin padding-x($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin padding-y($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+// margin
+@mixin margin-x($margin) {
+  margin-left: $margin;
+  margin-right: $margin;
+}
+
+@mixin margin-y($margin) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+}
+
+@mixin x-margin-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin x-margin-items($margin) {
+  margin-left: rem($margin);
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+@mixin y-margin-items($margin) {
+  margin-top: rem($margin);
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+// flex
+@mixin flex-all-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-col-center($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap;
+}
+
+@mixin flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-col-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@mixin flex-item-width($count, $gap) {
+  width: calc((100% / #{$count}) - (((#{$count} - 1) / #{$count}) * #{$gap}));
+}
+
+// container
+@mixin container {
+  @include x-margin-auto;
+
+  @include padding-x(rem($container-padding-x-desktop));
+
+  width: 100%;
+  max-width: $container-width-desktop;
+
+  @include md {
+    @include padding-x(rem($container-padding-x-tablet));
+  }
+
+  @include sm {
+    @include padding-x(rem($container-padding-x-mobile));
+  }
+}

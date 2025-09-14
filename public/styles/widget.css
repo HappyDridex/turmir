@@ -1,0 +1,102 @@
+.SLT-App-light__container {
+    background-color: transparent !important;
+}
+
+.SLT-SearchForm-light__desktopView.SLT-SearchForm-light__container {
+    padding: 0 !important;
+    max-width: 1000px !important;
+}
+
+.SLT-SearchForm-light__mainBlock {
+    padding: 10px !important;
+
+    box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.12) !important;
+    border-radius: 16px !important;
+    border: 1px solid #2f99cb !important;
+    background-color: #f7f7f7;
+}
+
+.SLT-DepartureCitySelect-light__fieldValueInput,
+.SLT-ArrivalCountrySelect-light__fieldValueInput,
+.SLT-DepartureDates-light__fieldValue,
+.SLT-NightsAmount-light__value,
+.SLT-TouristsAmount-light__fieldValue {
+    font-weight: 700 !important;
+
+    margin-top: 4px;
+}
+
+
+.SLT-TourTypeSelect-light__container {
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+
+/* бордер между секциями */
+.SLT-SearchForm-light__desktopView.SLT-SearchForm-light__container .SLT-SearchForm-light__mainBlock .SLT-SearchForm-light__field:not(:last-child):after,
+.SLT-SearchForm-light__desktopView.SLT-SearchForm-light__container .SLT-SearchForm-light__mainBlock .SLT-SearchForm-light__field.SLT-SearchForm-light__half:not(:last-child):after {
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 4px !important;
+}
+
+.SLT-DepartureCitySelect-light__desktopView .SLT-DepartureCitySelect-light__field::after,
+.SLT-ArrivalCountrySelect-light__desktopView.SLT-ArrivalCountrySelect-light__container .SLT-ArrivalCountrySelect-light__field::after {
+    content: none
+}
+
+.SLT-SearchForm-light__searchBtn {
+    border-radius: 16px !important;
+}
+
+.SLT-SearchForm-light__field {
+    border-radius: 12px !important;
+    background-color: #f7f7f7 !important;
+}
+
+.SLT-ResortsSelect-light__field::after {
+    content: none !important;
+}
+
+.SLT-DepartureCitiesList-light__listItemTitleValue,
+.SLT-DepartureCitiesList-light__itemWrap,
+.SLT-ArrivalCountriesList-light__listItemTitleValue,
+.SLT-ArrivalCountriesList-light__itemWrap,
+.SLT-HotelsList-light__listItemTitleValue,
+.SLT-HotelsList-light__item,
+.SLT-HotelCategoriesList-light__checkbox,
+.SLT-MealsList-light__option,
+.SLT-HotelCategoriesList-light__option {
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+.SLT-DepartureCitySelect-light__content,
+.SLT-ArrivalCountrySelect-light__content,
+.SLT-DepartureDates-light__calendar,
+.SLT-NightsAmount-light__content,
+.SLT-TouristsAmount-light__content,
+.SLT-ResortsSelect-light__content,
+.SLT-HotelsSelect-light__content,
+.SLT-HotelCategoriesSelect-light__content,
+.SLT-MealsSelect-light__content {
+    overflow: hidden;
+
+    border-radius: 12px !important;
+}
+
+.SLT-CurrentSearchLink-light__container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .SLT-SearchForm-light__field.SLT-SearchForm-light__half {
+        border: none;
+    }
+}
+
+.SLT-SearchResults-light__desktopView.SLT-SearchResults-light__container .SLT-SearchResults-light__closeButton {
+    z-index: 1000;
+}

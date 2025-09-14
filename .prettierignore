@@ -1,0 +1,11 @@
+.nuxt
+.output
+.vscode
+.prettierrc
+.github
+dist
+public
+pnpm-lock.yaml
+package.json
+README.md
+tsconfig.json

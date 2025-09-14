@@ -1,0 +1,192 @@
+<script setup lang="ts">
+// import { useLockscreen } from 'element-plus';
+import { PHONE, SOCIALS } from '@/utils/dictionary/address';
+
+defineOptions({
+  name: 'LayoutHeader',
+});
+
+// useLockscreen(isNavbarOpen);
+</script>
+
+<template>
+  <header class="header">
+    <div class="header__bg">
+      <div class="header__bg-inner">
+        <div class="header__bg-cloud header__bg-cloud--1" />
+        <div class="header__bg-cloud header__bg-cloud--2" />
+        <div class="header__bg-cloud header__bg-cloud--3" />
+      </div>
+    </div>
+
+    <div class="header__inner">
+      <NuxtLink to="/">
+        <NuxtImg
+          width="200"
+          src="/_static/images/logo.png"
+        />
+      </NuxtLink>
+
+      <div class="header__main">
+        <div class="header__contacts">
+          <NuxtLink
+            :to="`tel:${PHONE.value}`"
+            class="header__contacts-link"
+            external
+            target="_blank"
+          >
+            {{ PHONE.label }}
+          </NuxtLink>
+
+          <span class="header__contacts-address">
+            Офис в г.Ялта: ул. Большевистская, 10, ТЦ «Конфетти», 5 этаж
+          </span>
+        </div>
+
+        <div class="header__socials">
+          <ul class="header__socials-list">
+            <li
+              v-for="item in SOCIALS"
+              :key="item.name"
+              class="header__socials-list-item"
+            >
+              <NuxtLink
+                :to="item.link"
+                external
+                target="_blank"
+              >
+                <UiIcon :name="item.icon" />
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+
+        <UiButton
+          class="header__bid"
+          text="Заявка на тур"
+          theme="secondary"
+          bold="semibold"
+        />
+
+        <UiButtonNative class="header__burger">
+          <UiIcon
+            name="burger-menu"
+            size="big"
+          />
+        </UiButtonNative>
+      </div>
+    </div>
+  </header>
+</template>
+
+<style lang="scss" scoped>
+.header {
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 656px;
+
+    &-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      border-radius: 0px 0px 50px 50px;
+      background-color: $primary;
+    }
+
+    &-cloud {
+      position: absolute;
+      background-size: cover;
+      pointer-events: none;
+
+      &--1 {
+        background-image: url('/_static/images/cloud-1.png');
+        width: 300px;
+        height: 76px;
+        top: 36px;
+        left: 25%;
+      }
+
+      &--2 {
+        background-image: url('/_static/images/cloud-2.png');
+        width: 333px;
+        height: 116px;
+        top: 151px;
+        left: 0;
+        transform: translateX(-50%);
+      }
+
+      &--3 {
+        background-image: url('/_static/images/cloud-3.png');
+        width: 342px;
+        height: 117px;
+        top: 159px;
+        right: 0;
+        transform: translateX(50%);
+      }
+    }
+  }
+
+  &__inner {
+    @include container;
+    @include flex-space-between;
+
+    position: relative;
+    z-index: 1;
+  }
+
+  &__main {
+    @include flex-space-between;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    &-link {
+      font-size: rem(18px);
+      font-weight: $fw-bold;
+    }
+
+    &-address {
+      font-size: 15px;
+      opacity: 0.5;
+    }
+  }
+
+  &__socials {
+    margin-left: rem(20px);
+
+    &-list {
+      display: flex;
+      align-items: center;
+      column-gap: rem(20px);
+
+      &-item {
+        @include base-transition(transform);
+
+        @include mouse-hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+
+  &__bid {
+    margin-left: rem(24px);
+  }
+
+  &__burger {
+    margin-left: rem(24px);
+  }
+}
+</style>
