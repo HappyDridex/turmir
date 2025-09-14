@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  nuxt:
+    container_name: frontend_nuxt
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NUXT_PUBLIC_API_BASE_URL=${NUXT_PUBLIC_API_BASE_URL}
+    networks:
+      - backend
+
+networks:
+  backend:
+    external: true

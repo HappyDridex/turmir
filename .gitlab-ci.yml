@@ -1,0 +1,24 @@
+stages:
+  - all
+build_service:
+  image: docker:latest
+  services:
+    - docker:dind
+  stage: all
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+    VERSION: 0.0.$CI_PIPELINE_IID
+    IMAGE_NAME: "$GITLAB_IMAGE_NAME:$VERSION"
+    IMAGE_NAME_LATEST: "$GITLAB_IMAGE_NAME:latest"
+
+  script:
+    - docker build -t temp_name -f ./Dockerfile .
+    - echo "$GITLAB_ACCESS_TOKEN" | docker login registry.gitlab.com -u $GITLAB_USER_LOGIN --password-stdin
+    - docker tag temp_name $IMAGE_NAME
+    - docker tag temp_name $IMAGE_NAME_LATEST
+    - docker push $IMAGE_NAME
+    - docker push $IMAGE_NAME_LATEST
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+      when: always
