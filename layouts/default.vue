@@ -33,7 +33,7 @@ defineOptions({
   }
 
   &__footer {
-    margin-top: 122px;
+    margin-top: rem(130px);
   }
 }
 </style>

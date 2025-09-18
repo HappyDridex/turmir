@@ -1,180 +1,237 @@
 <script setup lang="ts">
+import { ADDRESS, PHONE, COMPANY } from '~/utils/dictionary/address';
+
 defineOptions({
   name: 'LayoutFooter',
 });
 
-const cols = [
-  [
-    {
-      text: 'Подбор тура',
-      bold: true,
-      link: '/',
-    },
-    {
-      text: 'Горящие туры',
-      bold: true,
-      link: '/',
-    },
-  ],
-
-  [
-    {
-      text: 'О компании',
-      bold: true,
-    },
-    {
-      text: 'О нас',
-      link: '/',
-    },
-  ],
-  [
-    {
-      text: 'Контакты',
-      bold: true,
-    },
-    {
-      text: 'Офис в г.Ялта: ул. Большевистская, 10, ТЦ «Конфетти», 5 этаж',
-    },
-    {
-      text: '+7 (978) 316-85-30',
-      link: 'tel:+79783168530',
-    },
-  ],
+const contacts = [
+  {
+    icon: 'icon',
+    label: 'Телефон для связи',
+    value: PHONE.label,
+  },
+  {
+    icon: 'icon',
+    label: 'Электронная почта',
+    value: COMPANY.mail,
+  },
+  {
+    icon: 'icon',
+    label: 'Адрес',
+    value: ADDRESS.full(),
+  },
 ];
 </script>
 
 <template>
   <footer class="footer">
     <div class="footer__inner">
-      <div class="footer__main">
-        <UiIconPlane class="footer__main-icon footer__main-icon--left" />
-        <UiIconPlane class="footer__main-icon footer__main-icon--right" />
+      <div class="footer__contacts">
+        <div class="footer__contacts-inner">
+          <div
+            v-for="{ icon, label, value } in contacts"
+            class="footer__contacts-item"
+          >
+            <div class="footer__contacts-item-icon">
+              {{ icon }}
+            </div>
 
-        <h2 class="footer__title">
-          Подпишитесь на нашу <br />
-          рассылку
-        </h2>
+            <div class="footer__contacts-item-text">
+              <p class="footer__contacts-item-value">
+                {{ value }}
+              </p>
 
-        <div class="footer__subscribe">
-          <UiButton
-            class="footer__subscribe-btn"
-            text="Подписаться"
-            theme="secondary"
-          />
+              <p class="footer__contacts-item-label">
+                {{ label }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
-      <nav class="footer__nav">
-        <div
-          v-for="(col, idx) in cols"
-          :key="idx"
-          class="footer__nav-col"
-        >
-          <div
-            v-for="({ bold, link, text }, idx) in col"
-            :key="idx"
-            class="footer__nav-row"
-          >
-            <NuxtLink
-              v-if="link"
-              class="footer__nav-row-item"
-              :to="link"
-              :class="{ bold }"
-            >
-              {{ text }}
-            </NuxtLink>
+      <div class="footer__subscription">
+        <UiIconPlane
+          class="footer__subscription-icon footer__subscription-icon--before"
+        />
 
-            <span
-              v-else
-              class="footer__nav-row-item"
-              :class="{ bold: bold }"
-            >
-              {{ text }}
-            </span>
-          </div>
-        </div>
-      </nav>
+        <h2 class="footer__subscription-title">Подпишитесь на нашу рассылку</h2>
+
+        <UiButton
+          class="footer__subscription-button"
+          text="Подписаться"
+          theme="secondary"
+        />
+
+        <UiIconPlane
+          class="footer__subscription-icon footer__subscription-icon--after"
+        />
+      </div>
+
+      <div class="footer__menu">
+        <LayoutNavbar />
+      </div>
+
+      <div class="footer__copyright">
+        ©{{ new Date().getFullYear() }} Travel Company. Все права защищены.
+      </div>
+
+      <div class="footer__org">
+        <p class="footer__org-personal">
+          Положение об обработке персональных данных
+        </p>
+
+        <p class="footer__org-politics">Политика конфиденциальности</p>
+      </div>
     </div>
   </footer>
 </template>
 
 <style lang="scss" scoped>
 .footer {
-  border-radius: 50px 50px 0px 0px;
+  border-radius: rem(100px) rem(100px) 0 0;
+
   background-color: $primary;
 
   &__inner {
     @include container;
 
-    padding-top: rem(164px);
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 0 auto;
+    padding: rem(160px) rem(20px) rem(35px);
   }
 
-  &__main {
+  &__contacts {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+
+    max-width: rem(1100px);
+
+    padding: 0 rem(20px);
+
+    &-inner {
+      display: flex;
+      align-items: center;
+
+      padding: rem(38px) rem(48px);
+
+      column-gap: rem(25px);
+
+      box-shadow: 0px 6px 45px rgba(0, 0, 0, 0.06);
+      border-radius: 36px;
+      border: 1px solid #e6e6e6;
+
+      background-color: #ffffff;
+    }
+
+    &-item {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      padding-left: rem(25px);
+
+      column-gap: rem(16px);
+
+      &-icon {
+        width: rem(64px);
+        height: rem(64px);
+      }
+
+      &-value {
+        font-size: rem(18px);
+        font-weight: 600;
+        line-height: rem(25px);
+      }
+
+      &-label {
+        margin-top: rem(2px);
+
+        font-size: rem(16px);
+        line-height: rem(20px);
+
+        opacity: 0.6;
+      }
+
+      &:not(:first-child)::before {
+        content: '';
+        width: 1px;
+        height: 30px;
+        background-color: black;
+        opacity: 0.1;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+
+  &__subscription {
     position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    max-width: rem(1160px);
+
+    row-gap: rem(30px);
+
+    &-title {
+      max-width: rem(500px);
+
+      text-align: center;
+      font-size: rem(44px);
+      font-weight: 800;
+      line-height: rem(48px);
+    }
 
     &-icon {
       position: absolute;
-      top: 0;
 
       width: rem(100px);
       height: rem(100px);
 
-      &--left {
+      &--before {
         left: 0;
       }
 
-      &--right {
+      &--after {
         right: 0;
+        transform: rotate(270deg);
       }
     }
   }
 
-  &__title {
-    font-size: 44px;
-    font-weight: 800;
-
-    text-align: center;
-  }
-
-  &__subscribe {
-    width: fit-content;
-    margin: 30px auto 0;
-
-    &-btn {
-      padding: rem(16px) rem(24px) !important;
-
-      &:deep(.base-button__text) {
-        font-size: 18px !important;
-        font-weight: 500;
-      }
-    }
-  }
-
-  &__nav {
-    display: flex;
-    justify-content: space-between;
+  &__menu {
+    width: 100%;
 
     margin-top: rem(90px);
+  }
 
-    &-col {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      row-gap: 40px;
+  &__copyright {
+    margin-top: rem(90px);
 
-      padding-left: 20px;
-      padding-right: 20px;
-    }
+    text-align: center;
+    font-size: rem(18px);
+    line-height: rem(30px);
+    opacity: 0.6;
+  }
 
-    &-row {
-      &-item {
-        font-size: 22px !important;
+  &__org {
+    text-align: center;
 
-        &.bold {
-          font-weight: 600;
-        }
-      }
-    }
+    font-size: rem(18px);
+    line-height: rem(30px);
+    opacity: 0.6;
   }
 }
 </style>

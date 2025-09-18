@@ -1,6 +1,9 @@
 const ADDRESS = {
   city: 'г. Москва',
   street: 'ул. Братиславская, д.18к1',
+  full() {
+    return `${this.city}, ${this.street}`;
+  },
 } as const;
 
 const PHONE = {
@@ -11,6 +14,7 @@ const PHONE = {
 const COMPANY = {
   name: 'ООО «Айти-Солюшнс»',
   inn: 'ИНН 7704480733',
+  mail: 'mail@mail.ru',
 } as const;
 
 const SOCIALS = [
