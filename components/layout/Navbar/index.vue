@@ -1,113 +1,188 @@
 <script setup lang="ts">
 import { ADDRESS, PHONE, COMPANY } from '~/utils/dictionary/address';
 
+import NavbarList from './List.vue';
+
 defineOptions({
   name: 'LayoutNavbar',
 });
 
+const { type = 'horizontal' } = defineProps<{
+  type?: 'horizontal' | 'vertical';
+}>();
+
 const emit = defineEmits<{
   'link:click': [];
 }>();
+
+const isVertical = computed(() => type === 'vertical');
+
+const main = [
+  {
+    text: 'Подбор тура',
+    bold: true,
+  },
+  {
+    text: 'Горящие туры',
+    bold: true,
+  },
+  {
+    text: 'Минимальные цены',
+    bold: true,
+  },
+  {
+    text: 'Страны',
+    bold: true,
+  },
+  {
+    text: 'Календарь туров',
+    bold: true,
+  },
+];
+
+const services = computed(() => [
+  {
+    text: 'Наши услуги',
+    bold: true,
+    title: isVertical.value,
+  },
+  {
+    text: 'Авиабилеты',
+  },
+  {
+    text: 'Визы',
+  },
+  {
+    text: 'Круизы',
+  },
+  {
+    text: 'Подбор отеля',
+  },
+]);
+
+const about = computed(() => [
+  {
+    text: 'О компании',
+    bold: true,
+    title: isVertical.value,
+  },
+  {
+    text: 'О нас',
+  },
+  {
+    text: 'Команда',
+  },
+]);
+
+const contacts = [
+  {
+    text: 'Контакты',
+    bold: true,
+  },
+  {
+    text: ADDRESS.full(),
+  },
+  {
+    text: PHONE.label,
+    bold: false,
+    attrs: {
+      href: `tel:${PHONE.value}`,
+    },
+  },
+  {
+    text: COMPANY.mail,
+  },
+];
+
+const allSection = computed(() => [
+  {
+    key: 'main',
+    routes: main,
+  },
+  {
+    key: 'services',
+    routes: services.value,
+    expandable: isVertical.value,
+  },
+  {
+    key: 'about',
+    routes: about.value,
+    expandable: isVertical.value,
+  },
+  {
+    key: 'contacts',
+    routes: contacts,
+  },
+]);
 </script>
 
 <template>
-  <nav class="navbar">
-    <ul class="navbar__section">
-      <li class="navbar__title">Подбор тура</li>
-
-      <ul class="navbar__submenu">
-        <li class="navbar__submenu-item bold">Горящие туры</li>
-
-        <li class="navbar__submenu-item bold">Минимальные цены</li>
-
-        <li class="navbar__submenu-item bold">Страны</li>
-
-        <li class="navbar__submenu-item bold">Календарь туров</li>
-      </ul>
-    </ul>
-
-    <ul class="navbar__section">
-      <li class="navbar__title">Наши услуги</li>
-
-      <ul class="navbar__submenu">
-        <li class="navbar__submenu-item">Авиабилеты</li>
-
-        <li class="navbar__submenu-item">Визы</li>
-
-        <li class="navbar__submenu-item">Круизы</li>
-
-        <li class="navbar__submenu-item">Подбор отеля</li>
-      </ul>
-    </ul>
-
-    <ul class="navbar__section">
-      <li class="navbar__title">О компании</li>
-
-      <ul class="navbar__submenu">
-        <li class="navbar__submenu-item">О нас</li>
-
-        <li class="navbar__submenu-item">Команда</li>
-
-        <li class="navbar__submenu-item">Круизы</li>
-
-        <li class="navbar__submenu-item">Подбор отеля</li>
-      </ul>
-    </ul>
-
-    <ul class="navbar__section">
-      <li class="navbar__title">Контакты</li>
-
-      <ul class="navbar__submenu">
-        <li class="navbar__submenu-item">
-          {{ ADDRESS.full() }}
-        </li>
-
-        <li class="navbar__submenu-item">
-          {{ PHONE.label }}
-        </li>
-
-        <li class="navbar__submenu-item">
-          {{ COMPANY.mail }}
-        </li>
-      </ul>
-    </ul>
+  <nav
+    class="navbar"
+    :class="[type]"
+  >
+    <NavbarList
+      v-for="section in allSection"
+      :key="section.key"
+      class="navbar__section"
+      :class="[section.key]"
+      :items="section.routes"
+      :expandable="section.expandable"
+      @link:click="emit('link:click')"
+    />
   </nav>
 </template>
 
 <style lang="scss" scoped>
 .navbar {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 
-  font-size: rem(20px);
-  line-height: rem(30px);
-  opacity: 0.8;
+  &.horizontal {
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  &__title {
-    font-size: rem(22px);
-    font-weight: 600;
+    .navbar__section {
+      padding: 0 rem(20px);
+    }
   }
 
-  &__section {
-    display: flex;
+  &.vertical {
+    flex-wrap: nowrap;
     flex-direction: column;
 
-    row-gap: rem(40px);
+    row-gap: rem(25px);
 
-    padding: 0 rem(20px);
-  }
+    :deep(.navbar__section) {
+      .navbar-list {
+        &__inner {
+          row-gap: rem(15px);
+        }
 
-  &__submenu {
-    display: flex;
-    flex-direction: column;
+        &__header {
+          &-title {
+            font-size: rem(18px);
+            font-weight: 600;
+            line-height: rem(25px);
+          }
+        }
 
-    row-gap: rem(40px);
+        &__submenu {
+          row-gap: rem(15px);
+        }
 
-    &-item {
-      &.bold {
-        font-size: rem(22px);
-        font-weight: 600;
+        &__link {
+          opacity: 1;
+          font-size: rem(18px);
+          line-height: rem(25px);
+        }
+      }
+    }
+
+    :deep(.navbar__section.main) {
+      .navbar-list {
+        &__submenu {
+          row-gap: rem(25px);
+        }
       }
     }
   }

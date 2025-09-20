@@ -1,12 +1,11 @@
 <script setup lang="ts">
-// import { useLockscreen } from 'element-plus';
 import { PHONE, SOCIALS } from '@/utils/dictionary/address';
 
 defineOptions({
   name: 'LayoutHeader',
 });
 
-// useLockscreen(isNavbarOpen);
+const [isMenuOpen, setMenuOpen] = useFlag();
 </script>
 
 <template>
@@ -68,7 +67,10 @@ defineOptions({
           bold="semibold"
         />
 
-        <UiButtonNative class="header__burger">
+        <UiButtonNative
+          class="header__burger"
+          @click="setMenuOpen"
+        >
           <UiIcon
             name="burger-menu"
             size="big"
@@ -76,6 +78,11 @@ defineOptions({
         </UiButtonNative>
       </div>
     </div>
+
+    <LayoutSidebar
+      v-model="isMenuOpen"
+      class="header__menu"
+    />
   </header>
 </template>
 
