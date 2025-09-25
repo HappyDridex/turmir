@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import filtersJson from '@/public/lottie/filters.json';
+import cardJson from '@/public/lottie/card.json';
+import clockJson from '@/public/lottie/clock.json';
+import beachJson from '@/public/lottie/beach.json';
+
 defineOptions({
   name: 'ViewHomeIntro',
 });
@@ -7,18 +12,22 @@ const STEPS = [
   {
     text: 'Выбрать параметры тура и оформить заказ',
     img: '/_static/images/guide-1.png',
+    lottie: filtersJson,
   },
   {
     text: 'Оплатить онлайн или в агентстве',
     img: '/_static/images/guide-2.png',
+    lottie: cardJson,
   },
   {
     text: 'Получить подтверждение и комплект документов',
     img: '/_static/images/guide-3.png',
+    lottie: clockJson,
   },
   {
     text: 'Собрать чемодан и насладиться отдыхом',
     img: '/_static/images/guide-4.png',
+    lottie: beachJson,
   },
 ];
 </script>
@@ -65,10 +74,16 @@ const STEPS = [
           class="home-intro__steps-item"
         >
           <div class="home-intro__steps-item-inner">
-            <NuxtImg
+            <ClientOnly>
+              <UiLottie
+                class="home-intro__steps-item-img"
+                :data="step.lottie"
+              />
+            </ClientOnly>
+            <!-- <NuxtImg
               class="home-intro__steps-item-img"
               :src="step.img"
-            />
+            /> -->
 
             <span class="home-intro__steps-item-text">
               {{ step.text }}
@@ -173,8 +188,8 @@ const STEPS = [
       }
 
       &-img {
-        width: 36px;
-        height: 36px;
+        width: 52px;
+        height: 52px;
       }
 
       &-text {

@@ -32,7 +32,7 @@ if (import.meta.client) {
   }
 
   &__hot,
-  &__cta {
+  &__match {
     margin-top: rem(90px);
   }
 

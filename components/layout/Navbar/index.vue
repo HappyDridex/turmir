@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ADDRESS, PHONE, COMPANY } from '~/utils/dictionary/address';
 
-import NavbarList from './List.vue';
-
 defineOptions({
   name: 'LayoutNavbar',
 });
@@ -91,6 +89,9 @@ const contacts = [
   },
   {
     text: COMPANY.mail,
+    attrs: {
+      href: `mailto:${COMPANY.mail}`,
+    },
   },
 ];
 
@@ -117,71 +118,82 @@ const allSection = computed(() => [
 </script>
 
 <template>
-  <nav
-    class="navbar"
-    :class="[type]"
-  >
-    <NavbarList
-      v-for="section in allSection"
-      :key="section.key"
-      class="navbar__section"
-      :class="[section.key]"
-      :items="section.routes"
-      :expandable="section.expandable"
-      @link:click="emit('link:click')"
-    />
-  </nav>
+  <div class="navbar">
+    <nav
+      class="navbar__inner"
+      :class="[type]"
+    >
+      <LayoutNavbarList
+        v-for="section in allSection"
+        :key="section.key"
+        class="navbar__section"
+        :class="[section.key]"
+        :items="section.routes"
+        :expandable="section.expandable"
+        @link:click="emit('link:click')"
+      />
+    </nav>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .navbar {
   display: flex;
+  flex-direction: column;
 
-  &.horizontal {
-    flex-wrap: wrap;
-    justify-content: space-between;
+  min-height: 0;
 
-    .navbar__section {
-      padding: 0 rem(20px);
-    }
-  }
+  &__inner {
+    display: flex;
+    overflow-y: auto;
+    padding: 2px;
 
-  &.vertical {
-    flex-wrap: nowrap;
-    flex-direction: column;
+    &.horizontal {
+      flex-wrap: wrap;
+      justify-content: space-between;
 
-    row-gap: rem(25px);
-
-    :deep(.navbar__section) {
-      .navbar-list {
-        &__inner {
-          row-gap: rem(15px);
-        }
-
-        &__header {
-          &-title {
-            font-size: rem(18px);
-            font-weight: 600;
-            line-height: rem(25px);
-          }
-        }
-
-        &__submenu {
-          row-gap: rem(15px);
-        }
-
-        &__link {
-          opacity: 1;
-          font-size: rem(18px);
-          line-height: rem(25px);
-        }
+      .navbar__section {
+        padding: 0 rem(20px);
       }
     }
 
-    :deep(.navbar__section.main) {
-      .navbar-list {
-        &__submenu {
-          row-gap: rem(25px);
+    &.vertical {
+      flex-wrap: nowrap;
+      flex-direction: column;
+
+      row-gap: rem(25px);
+
+      :deep(.navbar__section) {
+        .navbar-list {
+          &__inner {
+            row-gap: rem(15px);
+          }
+
+          &__header {
+            &-title {
+              font-size: rem(18px);
+              font-weight: 600;
+              line-height: rem(25px);
+            }
+          }
+
+          &__submenu {
+            row-gap: rem(15px);
+          }
+
+          &__link {
+            opacity: 1;
+            font-size: rem(18px);
+            line-height: rem(25px);
+          }
+        }
+      }
+
+      :deep(.navbar__section.main) {
+        .navbar-list {
+          &__submenu {
+            row-gap: rem(25px);
+          }
         }
       }
     }

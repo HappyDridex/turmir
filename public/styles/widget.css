@@ -100,3 +100,8 @@
 .SLT-SearchResults-light__desktopView.SLT-SearchResults-light__container .SLT-SearchResults-light__closeButton {
     z-index: 1000;
 }
+
+.SLT-TouristsAmount-light__content,
+.SLT-NightsAmount-light__content {
+    border: 1px solid #0a0b1e;
+}

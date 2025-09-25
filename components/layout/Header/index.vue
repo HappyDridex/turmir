@@ -19,8 +19,12 @@ const [isMenuOpen, setMenuOpen] = useFlag();
     </div>
 
     <div class="header__inner">
-      <NuxtLink to="/">
+      <NuxtLink
+        class="header__logo"
+        to="/"
+      >
         <NuxtImg
+          class="header__logo-pic"
           width="200"
           src="/_static/images/logo.png"
         />
@@ -139,6 +143,12 @@ const [isMenuOpen, setMenuOpen] = useFlag();
         right: 0;
         transform: translateX(50%);
       }
+    }
+  }
+
+  &__logo {
+    &-pic {
+      filter: invert(1);
     }
   }
 

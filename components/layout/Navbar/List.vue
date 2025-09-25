@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import type { JSX } from 'vue/jsx-runtime';
 import type { RouteLocationRaw } from 'vue-router';
+import type { AnchorHTMLAttributes } from 'vue';
 
 type NavbarItem = {
   text: string;
   to?: RouteLocationRaw;
   title?: boolean;
   bold?: boolean;
-  attrs?: JSX.IntrinsicElements['a'];
+  attrs?: AnchorHTMLAttributes;
 };
 
 interface Props {
@@ -25,6 +25,8 @@ const emit = defineEmits<{
   'link:click': [];
 }>();
 
+const NuxtLink = resolveComponent('NuxtLink');
+
 const [isExpand, _, __, toggleExpand] = useFlag();
 
 const header = computed(() => items.find(item => item.title));
@@ -34,7 +36,7 @@ const resolvedItems = computed(() => {
     return items;
   }
 
-  return items.filter(item => !item.title);
+  return items.filter(({ title }) => !title);
 });
 </script>
 
@@ -44,21 +46,19 @@ const resolvedItems = computed(() => {
       <li
         v-if="expandable"
         class="navbar-list__header"
+        tabindex="0"
+        @click="toggleExpand"
       >
         <p
           class="navbar-list__header-title"
           :class="{
             bold: header?.bold,
           }"
-          @click="toggleExpand"
         >
           {{ header?.text }}
         </p>
 
-        <UiButtonNative
-          class="navbar-list__header-expand"
-          @click="toggleExpand"
-        >
+        <UiButtonNative class="navbar-list__header-expand">
           <UiIcon
             class="navbar-list__header-expand-icon"
             :name="!isExpand ? 'chevron-down' : 'chevron-up'"
@@ -66,27 +66,33 @@ const resolvedItems = computed(() => {
         </UiButtonNative>
       </li>
 
-      <template v-if="!expandable ? true : isExpand">
-        <ul class="navbar-list__submenu">
-          <li
-            v-for="{ text, to, bold, attrs } in resolvedItems"
-            :key="text"
-            class="navbar-list__submenu-item"
-          >
-            <NuxtLink
-              class="navbar-list__link"
-              :class="{
-                bold,
-              }"
-              :to="to"
-              v-bind="attrs"
-              @click="emit('link:click')"
+      <Transition name="height-grow">
+        <li
+          v-show="!expandable || isExpand"
+          class="navbar-list__wrap"
+        >
+          <ul class="navbar-list__submenu">
+            <li
+              v-for="{ text, to, bold, attrs } in resolvedItems"
+              :key="text"
+              class="navbar-list__submenu-item"
             >
-              {{ text }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </template>
+              <component
+                :is="to || attrs?.href ? NuxtLink : 'div'"
+                class="navbar-list__link"
+                :class="{
+                  bold,
+                }"
+                :to="to"
+                v-bind="attrs"
+                @click="emit('link:click')"
+              >
+                {{ text }}
+              </component>
+            </li>
+          </ul>
+        </li>
+      </Transition>
     </ul>
   </div>
 </template>
@@ -100,8 +106,9 @@ const resolvedItems = computed(() => {
 
   &__header {
     display: flex;
-
     column-gap: rem(10px);
+
+    user-select: none;
 
     &-title {
       cursor: pointer;
@@ -124,6 +131,8 @@ const resolvedItems = computed(() => {
   &__link {
     font-size: rem(20px);
     line-height: rem(30px);
+
+    white-space: pre-line;
 
     opacity: 0.8;
 

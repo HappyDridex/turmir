@@ -1,25 +1,36 @@
 <script setup lang="ts">
-import { ADDRESS, PHONE, COMPANY } from '~/utils/dictionary/address';
+import {
+  ADDRESS,
+  PHONE,
+  COMPANY,
+  TG_FEED_CHANNEL_LINK,
+} from '~/utils/dictionary/address';
 
 defineOptions({
   name: 'LayoutFooter',
 });
 
+const NuxtLink = resolveComponent('NuxtLink');
+
 const contacts = [
   {
-    icon: 'icon',
+    icon: 'phone',
     label: 'Телефон для связи',
-    value: PHONE.label,
+    valueLabel: PHONE.label,
+    value: `tel:${PHONE.value}`,
+    isLink: true,
   },
   {
-    icon: 'icon',
+    icon: 'email',
     label: 'Электронная почта',
-    value: COMPANY.mail,
+    isLink: true,
+    valueLabel: COMPANY.mail,
+    value: `mailto:${COMPANY.mail}`,
   },
   {
-    icon: 'icon',
+    icon: 'geo',
     label: 'Адрес',
-    value: ADDRESS.full(),
+    valueLabel: ADDRESS.full(),
   },
 ];
 </script>
@@ -30,17 +41,26 @@ const contacts = [
       <div class="footer__contacts">
         <div class="footer__contacts-inner">
           <div
-            v-for="{ icon, label, value } in contacts"
+            v-for="{ icon, label, valueLabel, value, isLink } in contacts"
+            :key="label"
             class="footer__contacts-item"
           >
             <div class="footer__contacts-item-icon">
-              {{ icon }}
+              <div class="footer__contacts-item-icon-inner">
+                <UiIcon :name="icon" />
+              </div>
             </div>
 
             <div class="footer__contacts-item-text">
-              <p class="footer__contacts-item-value">
-                {{ value }}
-              </p>
+              <component
+                :is="isLink ? NuxtLink : 'span'"
+                class="footer__contacts-item-value"
+                :to="value"
+                external
+                target="_blank"
+              >
+                {{ valueLabel }}
+              </component>
 
               <p class="footer__contacts-item-label">
                 {{ label }}
@@ -57,11 +77,17 @@ const contacts = [
 
         <h2 class="footer__subscription-title">Подпишитесь на нашу рассылку</h2>
 
-        <UiButton
-          class="footer__subscription-button"
-          text="Подписаться"
-          theme="secondary"
-        />
+        <NuxtLink
+          :to="TG_FEED_CHANNEL_LINK"
+          external
+          target="_blank"
+        >
+          <UiButton
+            class="footer__subscription-button"
+            text="Подписаться"
+            theme="secondary"
+          />
+        </NuxtLink>
 
         <UiIconPlane
           class="footer__subscription-icon footer__subscription-icon--after"
@@ -73,7 +99,7 @@ const contacts = [
       </div>
 
       <div class="footer__copyright">
-        ©{{ new Date().getFullYear() }} Travel Company. Все права защищены.
+        ©{{ new Date().getFullYear() }} ООО "СПКА". Все права защищены.
       </div>
 
       <div class="footer__org">
@@ -135,14 +161,28 @@ const contacts = [
 
       display: flex;
       align-items: center;
+      flex: 1;
 
       padding-left: rem(25px);
 
       column-gap: rem(16px);
 
       &-icon {
+        flex-shrink: 0;
+
         width: rem(64px);
         height: rem(64px);
+        padding: 10px;
+
+        &-inner {
+          @include flex-all-center;
+
+          width: 100%;
+          height: 100%;
+
+          border-radius: 50%;
+          background-color: $primary;
+        }
       }
 
       &-value {

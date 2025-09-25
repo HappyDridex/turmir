@@ -40,7 +40,12 @@ const emit = defineEmits<{
   }
 
   :deep(.sidebar__body) {
+    display: flex;
+    flex-direction: column;
+
     padding: rem(40px) rem(20px) rem(30px) rem(30px);
+    min-width: 320px;
+    max-height: 100lvh;
 
     overflow: hidden;
   }

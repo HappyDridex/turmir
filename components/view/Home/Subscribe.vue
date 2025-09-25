@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { TG_FEED_CHANNEL_LINK } from '@/utils/dictionary/address';
+import planeJson from '@/public/lottie/plane.json';
+
 defineOptions({
   name: 'ViewHomeSubscribe',
 });
@@ -22,18 +25,25 @@ defineOptions({
               Подключись к ленте горящих туров
             </h2>
 
-            <UiButton
-              class="home-subscribe__main-info-button"
-              text="Telegram"
-              theme="secondary"
+            <NuxtLink
+              :to="TG_FEED_CHANNEL_LINK"
+              external
+              target="_blank"
             >
-              <template #pre>
-                <UiIcon
-                  name="tg-circled"
-                  size="big"
-                />
-              </template>
-            </UiButton>
+              <UiButton
+                class="home-subscribe__main-info-button"
+                tag="div"
+                text="Telegram"
+                theme="secondary"
+              >
+                <template #pre>
+                  <UiIcon
+                    name="tg-circled"
+                    size="big"
+                  />
+                </template>
+              </UiButton>
+            </NuxtLink>
           </div>
 
           <div class="home-subscribe__main-mocks">
@@ -43,14 +53,18 @@ defineOptions({
               class="home-subscribe__main-mocks-item"
             >
               <div class="home-subscribe__main-mocks-item-company">
-                <UiIconPlane
-                  class="home-subscribe__main-mocks-item-company-icon"
-                />
-
                 <NuxtImg
                   class="home-subscribe__main-mocks-item-company-pic"
                   src="/_static\images\logo.png"
                 />
+
+                <ClientOnly>
+                  <UiLottie
+                    class="home-subscribe__main-mocks-item-lottie"
+                    :class="`home-subscribe__main-mocks-item-lottie--${item}`"
+                    :data="planeJson"
+                  />
+                </ClientOnly>
               </div>
 
               <NuxtImg
@@ -164,16 +178,14 @@ defineOptions({
 
             filter: invert(1);
           }
+        }
 
-          &-icon {
-            position: absolute;
-            left: 0;
-            top: 24%;
+        &-lottie {
+          position: absolute;
+          bottom: 20%;
 
-            width: 50% !important;
-            height: auto !important;
-
-            transform: rotate(280deg);
+          &--2 {
+            bottom: 10%;
           }
         }
       }
