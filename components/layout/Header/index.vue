@@ -5,7 +5,8 @@ defineOptions({
   name: 'LayoutHeader',
 });
 
-const [isMenuOpen, setMenuOpen] = useFlag();
+const [isMenuOpen, setMenuOpen, unsetMenuOpen] = useFlag();
+const [isTourRequestOpen, setTourRequestOpen] = useFlag();
 </script>
 
 <template>
@@ -69,6 +70,7 @@ const [isMenuOpen, setMenuOpen] = useFlag();
           text="Заявка на тур"
           theme="secondary"
           bold="semibold"
+          @click="setTourRequestOpen"
         />
 
         <UiButtonNative
@@ -86,6 +88,12 @@ const [isMenuOpen, setMenuOpen] = useFlag();
     <LayoutSidebar
       v-model="isMenuOpen"
       class="header__menu"
+      @link:click="unsetMenuOpen"
+    />
+
+    <ViewPopupTourRequest
+      v-model="isTourRequestOpen"
+      class="header__tour-request"
     />
   </header>
 </template>

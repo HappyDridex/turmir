@@ -69,6 +69,9 @@ const about = computed(() => [
   },
   {
     text: 'Команда',
+    to: {
+      name: 'team',
+    },
   },
 ]);
 

@@ -70,29 +70,25 @@ const contacts = [
         </div>
       </div>
 
-      <div class="footer__subscription">
-        <UiIconPlane
-          class="footer__subscription-icon footer__subscription-icon--before"
-        />
+      <ViewCommonHeroTitle class="footer__subscription">
+        <div class="footer__subscription-inner">
+          <h2 class="footer__subscription-title">
+            Подпишитесь на нашу рассылку
+          </h2>
 
-        <h2 class="footer__subscription-title">Подпишитесь на нашу рассылку</h2>
-
-        <NuxtLink
-          :to="TG_FEED_CHANNEL_LINK"
-          external
-          target="_blank"
-        >
-          <UiButton
-            class="footer__subscription-button"
-            text="Подписаться"
-            theme="secondary"
-          />
-        </NuxtLink>
-
-        <UiIconPlane
-          class="footer__subscription-icon footer__subscription-icon--after"
-        />
-      </div>
+          <NuxtLink
+            :to="TG_FEED_CHANNEL_LINK"
+            external
+            target="_blank"
+          >
+            <UiButton
+              class="footer__subscription-button"
+              text="Подписаться"
+              theme="secondary"
+            />
+          </NuxtLink>
+        </div>
+      </ViewCommonHeroTitle>
 
       <div class="footer__menu">
         <LayoutNavbar />
@@ -213,41 +209,18 @@ const contacts = [
   }
 
   &__subscription {
-    position: relative;
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+      margin: 0 rem(180px);
 
-    width: 100%;
-    max-width: rem(1160px);
-
-    row-gap: rem(30px);
+      gap: rem(15px);
+    }
 
     &-title {
       max-width: rem(500px);
-
-      text-align: center;
-      font-size: rem(44px);
-      font-weight: 800;
-      line-height: rem(48px);
-    }
-
-    &-icon {
-      position: absolute;
-
-      width: rem(100px);
-      height: rem(100px);
-
-      &--before {
-        left: 0;
-      }
-
-      &--after {
-        right: 0;
-        transform: rotate(270deg);
-      }
     }
   }
 

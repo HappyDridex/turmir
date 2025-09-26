@@ -1,23 +1,23 @@
 <script setup lang="ts" generic="T">
 defineOptions({
-  name: "UiSwiper",
+  name: 'UiSwiper',
 });
 
-const { modules = [], direction = "horizontal" } = defineProps<{
+const { modules = [], direction = 'horizontal' } = defineProps<{
   slides: T[];
-  slidesPerView: number | "auto";
+  slidesPerView: number | 'auto';
   spaceBetween: number;
-  direction?: "horizontal" | "vertical";
+  direction?: 'horizontal' | 'vertical';
   modules?: unknown[];
 }>();
 
-const Swiper = resolveComponent("Swiper");
-const SwiperSlide = resolveComponent("SwiperSlide");
+const Swiper = resolveComponent('Swiper');
+const SwiperSlide = resolveComponent('SwiperSlide');
 
 const isClient = import.meta.client;
 
-const wrapperTag = isClient ? Swiper : "ul";
-const listTag = isClient ? SwiperSlide : "li";
+const wrapperTag = isClient ? Swiper : 'ul';
+const listTag = isClient ? SwiperSlide : 'li';
 </script>
 
 <template>
@@ -52,7 +52,7 @@ const listTag = isClient ? SwiperSlide : "li";
 <style scoped lang="scss">
 .ui-swiper {
   --swiper-navigation-size: 36px;
-  --swiper-navigation-color: #{$color-primary};
+  --swiper-navigation-color: #{$primary};
 
   @include md {
     --swiper-navigation-size: 46px;

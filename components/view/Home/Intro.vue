@@ -35,28 +35,22 @@ const STEPS = [
 <template>
   <section class="home-intro">
     <header class="home-intro__header">
-      <div class="home-intro__header-icon">
-        <UiIconPlane class="home-intro__header-icon-pic" />
-      </div>
+      <ViewCommonHeroTitle>
+        <div class="home-intro__header-text">
+          <h1 class="home-intro__header-text-title">
+            Все
+            <span class="home-intro__header-text-title--accent">
+              путешествия
+            </span>
 
-      <div class="home-intro__header-text">
-        <h1 class="home-intro__header-text-title">
-          Все
-          <span class="home-intro__header-text-title--accent">
-            путешествия
-          </span>
+            на одном сайте
+          </h1>
 
-          на одном сайте
-        </h1>
-
-        <p class="home-intro__header-text-comment">
-          Онлайн поиск туров по 80 туроператорам
-        </p>
-      </div>
-
-      <div class="home-intro__header-icon">
-        <UiIconPlane class="home-intro__header-icon-pic rotate" />
-      </div>
+          <p class="home-intro__header-text-comment">
+            Онлайн поиск туров по 80 туроператорам
+          </p>
+        </div>
+      </ViewCommonHeroTitle>
     </header>
 
     <ClientOnly>
@@ -102,17 +96,6 @@ const STEPS = [
   &__header {
     display: flex;
     align-items: center;
-
-    &-icon {
-      &-pic {
-        width: rem(100px);
-        height: rem(100px);
-
-        &.rotate {
-          transform: rotate(270deg);
-        }
-      }
-    }
 
     &-text {
       &-title {
