@@ -102,6 +102,8 @@ const STEPS = [
         font-size: rem(48px);
         font-weight: $fw-extrabold;
 
+        text-align: center;
+
         &--accent {
           display: inline-flex;
           justify-content: center;

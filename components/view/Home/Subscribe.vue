@@ -94,6 +94,8 @@ defineOptions({
     &-pic {
       width: 997px;
       height: 665px;
+
+      object-fit: contain;
     }
   }
 
@@ -141,7 +143,6 @@ defineOptions({
 
       display: flex;
 
-      width: calc(40%);
       height: 500px;
 
       &-item {
@@ -160,6 +161,8 @@ defineOptions({
 
         &-pic {
           @include object-contain-full;
+
+          position: relative;
         }
 
         &-company {
