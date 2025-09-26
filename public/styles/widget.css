@@ -3,8 +3,9 @@
 }
 
 .SLT-SearchForm-light__desktopView.SLT-SearchForm-light__container {
-    padding: 0 !important;
+    padding: 16px !important;
     max-width: 1000px !important;
+    border-radius: 8px;
 }
 
 .SLT-SearchForm-light__mainBlock {
@@ -104,4 +105,97 @@
 .SLT-TouristsAmount-light__content,
 .SLT-NightsAmount-light__content {
     border: 1px solid #0a0b1e;
+}
+
+.SLT-HotelList-light__listItem {
+    border-radius: 24px;
+}
+
+.SLT-SlideItem-light__image {
+    border-radius: 16px;
+}
+
+.SLT-Tour-light__selectTourButton {
+    border-radius: 8px;
+}
+
+.SLT-SearchFilters-light__specialBlock,
+.SLT-SearchFilters-light__filterItemWrapper,
+.SLT-MealsList-light__container,
+.SLT-HotelCategoriesList-light__container .SLT-SelectButton-light__container,
+.SLT-PriceFilter-light__container,
+.SLT-SearchFilters-light__filterItem,
+.SLT-HotelService-light__container {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.SLT-SearchResults-light__resultsWrapper {
+    max-width: unset !important;
+    margin-top: 0;
+
+    border-radius: 8px;
+}
+
+
+.SLT-sortButtonsStyle__mobileContainer {
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.SLT-SearchResults-light__resultsStubWrapper {
+    width: 100%;
+}
+
+.SLT-HotelList-light__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+
+    width: 100%;
+
+
+}
+
+.SLT-HotelList-light__listItem {
+    margin-top: 0 !important;
+}
+
+.SLT-Hotel-light__container {
+    width: auto !important;
+}
+
+.SLT-SearchResults-light__filterButton {
+    border-radius: 12px;
+}
+
+.SLT-SearchResults-light__container {
+    border-radius: 16px;
+}
+
+.SLT-AskForHelpForm-light__container {
+    border-radius: 16px;
+}
+
+.SLT-AskForHelpForm-light__fieldInput,
+.SLT-AskForHelpForm-light__submitButton {
+    border-radius: 12px;
+}
+
+
+.SLT-sortButtonsStyle__button {
+    border-radius: 6px;
+    padding: 6px;
+}
+
+
+@media (max-width: 560px) {
+    .SLT-HotelList-light__container {
+        grid-template-columns: 1fr;
+    }
+
+    .SLT-HotelPhotoSlider-light__container {
+        height: 240px;
+    }
 }
