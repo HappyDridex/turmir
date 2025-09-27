@@ -23,7 +23,7 @@ const teams = [
 </script>
 
 <template>
-  <div class="teams">
+  <section class="teams">
     <ViewCommonHeroTitle class="teams__title">
       <h2>Команда, которая сделает ваш отпуск незабываемым</h2>
     </ViewCommonHeroTitle>
@@ -31,14 +31,14 @@ const teams = [
     <div class="teams__items">
       <UiSwiper
         :slides="teams"
-        :space-between="30"
-        :slides-per-view="3"
+        :space-between="32"
+        :slides-per-view="'auto'"
         class="teams__swiper"
       >
         <template #slide="{ slide, idx }">
           <div class="teams__item">
             <div class="teams__item-image">
-              <img :src="slide.photo + `?r=${idx}&height=200&width=200`" />
+              <img :src="slide.photo + `?r=${idx}&width=300&height=300`" />
             </div>
 
             <div class="teams__item-desc">
@@ -54,13 +54,14 @@ const teams = [
         </template>
       </UiSwiper>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
 .teams {
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   row-gap: rem(48px);
 
@@ -78,6 +79,8 @@ const teams = [
 
     &-image {
       position: relative;
+
+      width: rem(290px);
 
       padding-bottom: 120%;
 

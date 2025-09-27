@@ -12,6 +12,8 @@ definePageMeta({
   <div class="team-page">
     <ViewAboutTeams class="team-page__team" />
 
+    <ViewAboutFeedback class="team-page__feedback" />
+
     <ViewHomeMatchTour class="team-page__match" />
 
     <ViewHomeMap class="team-page__map" />
@@ -22,6 +24,10 @@ definePageMeta({
 .team-page {
   &__team {
     margin-top: rem(60px);
+  }
+
+  &__feedback {
+    margin-top: rem(50px);
   }
 
   &__match {
