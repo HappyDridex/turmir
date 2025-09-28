@@ -21,6 +21,8 @@ defineOptions({
 <style scoped lang="scss">
 .page-layout-section {
   &__title {
+    position: relative;
+
     font-size: 44px;
     font-weight: $fw-extrabold;
 

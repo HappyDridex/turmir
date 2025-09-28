@@ -2,6 +2,8 @@
 defineOptions({
   name: 'ViewHomeMatchTour',
 });
+
+const { setTourRequestOpen } = useTourRequestPopup();
 </script>
 
 <template>
@@ -22,6 +24,7 @@ defineOptions({
         <UiButton
           class="home-match-tour__main-content-btn"
           text="Подобрать тур"
+          @click="setTourRequestOpen"
         />
       </div>
 

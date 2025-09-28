@@ -2,6 +2,8 @@
 defineOptions({
   name: 'LayoutDefault',
 });
+
+const { isTourRequestOpen } = useTourRequestPopup();
 </script>
 
 <template>
@@ -13,10 +15,15 @@ defineOptions({
     </div>
 
     <LayoutFooter class="layout-default__footer" />
+
+    <ViewPopupTourRequest
+      v-model="isTourRequestOpen"
+      class="header__tour-request"
+    />
   </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .layout-default {
   display: flex;
   flex-direction: column;

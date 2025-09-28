@@ -5,7 +5,8 @@ defineOptions({
   name: 'LayoutHeader',
 });
 
-const [isMenuOpen, setMenuOpen] = useFlag();
+const [isMenuOpen, setMenuOpen, unsetMenuOpen] = useFlag();
+const { setTourRequestOpen } = useTourRequestPopup();
 </script>
 
 <template>
@@ -71,6 +72,7 @@ const [isMenuOpen, setMenuOpen] = useFlag();
           text="Заявка на тур"
           theme="secondary"
           bold="semibold"
+          @click="setTourRequestOpen"
         />
 
         <div class="header__phone">
@@ -104,6 +106,7 @@ const [isMenuOpen, setMenuOpen] = useFlag();
     <LayoutSidebar
       v-model="isMenuOpen"
       class="header__menu"
+      @link:click="unsetMenuOpen"
     />
   </header>
 </template>

@@ -282,6 +282,13 @@ const contacts = [
         transform: rotate(270deg);
       }
     }
+
+    &-button {
+      @include sm {
+        padding-top: 14px !important;
+        padding-bottom: 14px !important;
+      }
+    }
   }
 
   &__menu {

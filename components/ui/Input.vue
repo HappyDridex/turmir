@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: "UiInput",
+  name: 'UiInput',
 });
 
 const props = withDefaults(
@@ -23,18 +23,18 @@ const model = defineModel<string | number | null>({
 // @ts-expect-error ts-type-error
 const slots = useSlots();
 
-const extraAttrs = props.numericKeyboard ? { inputmode: "numeric" } : {};
+const extraAttrs = props.numericKeyboard ? { inputmode: 'numeric' } : {};
 
-const pattern = props.numericKeyboard ? "[0-9]" : undefined;
+const pattern = props.numericKeyboard ? '[0-9]' : undefined;
 
 const getParser = () => {
   if (props.numericKeyboard) {
     return (value: string) => {
-      if (value === "") {
+      if (value === '') {
         return null;
       }
 
-      return +value.replace(/\D/g, "");
+      return +value.replace(/\D/g, '');
     };
   }
 
@@ -83,5 +83,8 @@ const transformers = {
 <style scoped lang="scss">
 .input {
   width: 100%;
+
+  --el-color-primary: red;
+  --el-input-focus-border-color: #0a0b1e;
 }
 </style>

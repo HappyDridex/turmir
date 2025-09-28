@@ -78,7 +78,7 @@ const resolvedItems = computed(() => {
               class="navbar-list__submenu-item"
             >
               <component
-                :is="to || attrs?.href ? NuxtLink : 'div'"
+                :is="to || attrs?.href ? NuxtLink : 'p'"
                 class="navbar-list__link"
                 :class="{
                   bold,
