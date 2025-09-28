@@ -9,7 +9,7 @@ const {
   tag = undefined,
   bold = 'regular',
 } = defineProps<{
-  text: string;
+  text?: string;
   theme?: 'primary' | 'secondary' | 'transparent';
   full?: boolean;
   tag?: string;
@@ -52,7 +52,7 @@ const buttonTag = tag ?? UiButtonNative;
   justify-content: center;
   column-gap: rem(12px);
 
-  padding: rem(14px) rem(20px);
+  padding: rem(12px) rem(20px);
 
   text-align: center;
 
@@ -128,7 +128,7 @@ const buttonTag = tag ?? UiButtonNative;
   }
 
   &__text {
-    font-size: rem(18px);
+    font-size: rem(16px);
 
     @include md {
       font-size: rem(18px);

@@ -46,6 +46,8 @@ const STEPS = [
             путешествия
           </span>
 
+          <br class="home-intro__header-text-title-br" />
+
           на одном сайте
         </h1>
 
@@ -80,10 +82,6 @@ const STEPS = [
                 :data="step.lottie"
               />
             </ClientOnly>
-            <!-- <NuxtImg
-              class="home-intro__steps-item-img"
-              :src="step.img"
-            /> -->
 
             <span class="home-intro__steps-item-text">
               {{ step.text }}
@@ -100,13 +98,24 @@ const STEPS = [
   @include flex-col-center;
 
   &__header {
-    display: flex;
-    align-items: center;
+    @include flex-space-between;
+
+    width: 100%;
 
     &-icon {
       &-pic {
         width: rem(100px);
         height: rem(100px);
+
+        @include md {
+          width: rem(75px);
+          height: rem(75px);
+        }
+
+        @include sm {
+          width: 10vw;
+          height: auto;
+        }
 
         &.rotate {
           transform: rotate(270deg);
@@ -121,6 +130,10 @@ const STEPS = [
 
         text-align: center;
 
+        @include md {
+          font-size: rem(32px);
+        }
+
         &--accent {
           display: inline-flex;
           justify-content: center;
@@ -131,6 +144,14 @@ const STEPS = [
           background: rgba(255, 255, 255, 0.7);
           border-radius: 50px;
         }
+
+        &-br {
+          display: none;
+
+          @include sm {
+            display: block;
+          }
+        }
       }
 
       &-comment {
@@ -138,6 +159,12 @@ const STEPS = [
 
         width: fit-content;
         margin: rem(12px) auto 0;
+
+        text-align: center;
+
+        @include md {
+          font-size: rem(18px);
+        }
       }
     }
   }
@@ -147,11 +174,19 @@ const STEPS = [
 
     width: 100%;
     padding-top: calc($y-offset + 46px);
-
     margin-top: (-$y-offset);
 
     border-radius: 50px 50px 0 0;
     background-color: $bg-color-primary;
+
+    @include md {
+      align-self: stretch;
+
+      width: auto;
+      padding-top: calc($y-offset + 20px);
+      margin-left: -$container-padding-x-tablet;
+      margin-right: -$container-padding-x-tablet;
+    }
   }
 
   &__steps {
@@ -164,10 +199,30 @@ const STEPS = [
     margin-right: auto;
     padding-bottom: 50px;
 
+    @include md {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: rem(10px);
+
+      max-width: unset;
+      width: auto;
+      margin: 0;
+      margin-left: 20px;
+      margin-right: 20px;
+      padding: rem(34px) rem(24px);
+
+      box-shadow: 0px 4px 35px rgba(0, 0, 0, 0.12);
+      border-radius: 36px;
+    }
+
     &-item {
       position: relative;
 
       width: 25%;
+
+      @include md {
+        width: auto;
+      }
 
       &:not(:first-child)::before {
         content: '';
@@ -180,22 +235,40 @@ const STEPS = [
         top: 50%;
         transform: translateY(-50%);
         opacity: 0.14;
+
+        @include md {
+          content: none;
+        }
       }
 
       &-inner {
         display: flex;
         flex-direction: column;
         align-items: center;
-        row-gap: 16px;
+        gap: 16px;
+
+        @include md {
+          flex-direction: row;
+        }
       }
 
       &-img {
         width: 52px;
         height: 52px;
+
+        @include md {
+          width: 46px;
+          height: 46px;
+        }
       }
 
       &-text {
+        font-size: rem(18px);
         text-align: center;
+
+        @include md {
+          text-align: initial;
+        }
       }
     }
   }

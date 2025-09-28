@@ -34,6 +34,10 @@ if (import.meta.client) {
   &__hot,
   &__match {
     margin-top: rem(90px);
+
+    @include md {
+      margin-top: rem(60px);
+    }
   }
 
   &__map {

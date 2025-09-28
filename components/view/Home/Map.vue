@@ -26,6 +26,10 @@ defineOptions({
   border: 1px solid rgba(10, 11, 30, 0.5);
   border-radius: 50px;
 
+  @include md {
+    height: 400px;
+  }
+
   &__frame {
     width: 100%;
     height: 100%;

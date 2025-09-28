@@ -24,8 +24,8 @@ $txt-col-secondary: $bg-color-primary;
 $border-col-primary: #0a0b1e;
 
 // Breakpoints
-$screen-tablet: '(max-width: 1024px)';
-$screen-mobile: '(max-width: 768px)';
+$screen-tablet: '(max-width: 1000px)';
+$screen-mobile: '(max-width: 640px)';
 
 // Sizes
 $container-width-desktop: 1270px;
@@ -37,5 +37,6 @@ $container-padding-x-mobile: 20px;
 // Icon
 $icon-size-big: 30px;
 $icon-size-medium: 22px;
+$icon-size-small: 14px;
 
 // Z

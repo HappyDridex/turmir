@@ -55,7 +55,7 @@ defineOptions({
               <div class="home-subscribe__main-mocks-item-company">
                 <NuxtImg
                   class="home-subscribe__main-mocks-item-company-pic"
-                  src="/_static\images\logo.png"
+                  src="/_static/images/logo.png"
                 />
 
                 <ClientOnly>
@@ -83,7 +83,6 @@ defineOptions({
 <style scoped lang="scss">
 .home-subscribe {
   &__inner {
-    overflow: hidden;
   }
 
   &__image {
@@ -91,11 +90,20 @@ defineOptions({
     justify-content: center;
     height: 540px;
 
+    @include md {
+      height: 440px;
+    }
+
     &-pic {
       width: 997px;
       height: 665px;
 
       object-fit: contain;
+
+      @include md {
+        width: 552px;
+        height: auto;
+      }
     }
   }
 
@@ -103,13 +111,24 @@ defineOptions({
     position: relative;
     z-index: 1;
 
-    min-height: 309px;
+    min-height: 310px;
 
     border-radius: 50px;
     background-color: $primary;
 
+    @include sm {
+      margin-left: -$container-padding-x-tablet;
+      margin-right: -$container-padding-x-tablet;
+
+      border-radius: 36px;
+    }
+
     &-inner {
       padding: rem(64px) rem(60px);
+
+      @include md {
+        padding: rem(50px) rem(20px) 0;
+      }
     }
 
     &-info {
@@ -120,13 +139,31 @@ defineOptions({
 
       padding-right: calc(50% + 60px);
 
+      @include md {
+        row-gap: rem(20px);
+        align-items: center;
+
+        padding-right: 0;
+      }
+
       &-title {
         font-weight: 800;
         font-size: 42px;
+
+        text-align: center;
+
+        @include md {
+          font-size: 28px;
+        }
       }
 
       &-button {
         min-width: 178px;
+
+        @include sm {
+          padding-top: rem(12px) !important;
+          padding-bottom: rem(12px) !important;
+        }
 
         &:deep(.base-button__text) {
           font-size: 20px;
@@ -145,18 +182,44 @@ defineOptions({
 
       height: 500px;
 
+      @include md {
+        position: static;
+
+        display: flex;
+
+        max-width: 320px;
+        height: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
       &-item {
         position: relative;
+
+        @include md {
+          flex: 1;
+
+          height: fit-content;
+        }
 
         &:first-child {
           z-index: 2;
 
           transform: translate(30px, 140px);
+
+          @include md {
+            transform: translate(10px, 130px);
+          }
         }
 
         &:last-child {
           z-index: 3;
+
           transform: translateY(60px);
+
+          @include md {
+            transform: translate(-10px, 40px);
+          }
         }
 
         &-pic {
@@ -175,9 +238,16 @@ defineOptions({
 
           background-color: $bg-color-primary;
 
+          @include md {
+            border-radius: 18px;
+            inset: 4px;
+          }
+
           &-pic {
             width: 80%;
             height: auto;
+
+            transform: translateY(-20px);
 
             filter: invert(1);
           }

@@ -2,7 +2,7 @@ const ADDRESS = {
   city: 'респ. Крым, г. Ялта',
   street: 'ул. Сосновая, д. 23',
   full() {
-    return `${this.city}, ${this.street}`;
+    return `${this.city}, \n${this.street}`;
   },
 } as const;
 

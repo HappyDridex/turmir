@@ -14,7 +14,7 @@ const {
   desc?: string;
   title?: string;
   viewBox?: string;
-  size?: 'medium' | 'big' | 'full';
+  size?: 'small' | 'medium' | 'big' | 'full';
 }>();
 
 const classes = computed(() => `icon--${size}`);
@@ -34,6 +34,12 @@ const classes = computed(() => `icon--${size}`);
 
 <style scoped lang="scss">
 .icon {
+  // 14
+  &--small {
+    width: rem($icon-size-small);
+    height: rem($icon-size-small);
+  }
+
   &--medium {
     //22
     width: rem($icon-size-medium);

@@ -201,12 +201,4 @@
 
   width: 100%;
   max-width: $container-width-desktop;
-
-  @include md {
-    @include padding-x(rem($container-padding-x-tablet));
-  }
-
-  @include sm {
-    @include padding-x(rem($container-padding-x-mobile));
-  }
 }

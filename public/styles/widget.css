@@ -127,11 +127,13 @@
 .SLT-SearchFilters-light__filterItem,
 .SLT-HotelService-light__container {
     overflow: hidden;
+
+    padding: 4px;
+
     border-radius: 12px;
 }
 
 .SLT-SearchResults-light__resultsWrapper {
-    max-width: unset !important;
     margin-top: 0;
 
     border-radius: 8px;
@@ -150,12 +152,11 @@
 
 .SLT-HotelList-light__container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 24px;
 
     width: 100%;
-
-
+    margin-top: 24px;
 }
 
 .SLT-HotelList-light__listItem {
@@ -189,13 +190,12 @@
     padding: 6px;
 }
 
-
 @media (max-width: 560px) {
-    .SLT-HotelList-light__container {
-        grid-template-columns: 1fr;
-    }
-
     .SLT-HotelPhotoSlider-light__container {
         height: 240px;
+    }
+
+    .SLT-SearchResults-light__resultsWrapper {
+        max-width: unset !important;
     }
 }

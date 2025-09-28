@@ -81,13 +81,22 @@ defineOptions({
   }
 
   &__images {
+    @include md {
+      position: relative;
+
+      margin-top: 90px;
+      padding-bottom: 90px;
+    }
+
     &-item {
+      overflow: hidden;
+      position: absolute;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border-radius: 20px;
-      overflow: hidden;
-      position: absolute;
 
       &--1 {
         width: 145px;
@@ -95,13 +104,29 @@ defineOptions({
         top: 0;
         left: 0;
         transform: translateY(-25%);
+
+        @include md {
+          width: 106px;
+          height: 110px;
+
+          top: -20px;
+          left: 32%;
+
+          transform: none;
+        }
       }
 
       &--2 {
+        z-index: 4;
+
         width: 145px;
         height: 150px;
         top: 60px;
         left: 18%;
+
+        @include md {
+          left: 50%;
+        }
       }
 
       &--3 {
@@ -109,6 +134,13 @@ defineOptions({
         height: 150px;
         top: 0;
         right: 11%;
+
+        @include md {
+          left: 48%;
+
+          transform: translateX(-50%);
+          right: unset;
+        }
       }
 
       &--4 {
@@ -117,6 +149,13 @@ defineOptions({
         top: 0;
         right: 0;
         transform: translateY(-100%);
+
+        @include md {
+          top: -60px;
+          right: 34%;
+
+          transform: none;
+        }
       }
     }
   }
@@ -127,12 +166,20 @@ defineOptions({
     z-index: -1;
     top: 260px;
     left: -160px;
+    right: 0;
 
     display: flex;
     justify-content: center;
 
     width: auto;
     height: auto;
+
+    @include md {
+      top: unset;
+      bottom: 0;
+
+      transform: translate(30px, 340px);
+    }
 
     &::before {
       position: absolute;
@@ -156,6 +203,12 @@ defineOptions({
       width: 997px;
       height: 665px;
       max-width: unset;
+
+      @include md {
+        width: 70%;
+        height: auto;
+        margin-right: auto;
+      }
 
       &--sm {
         display: none;

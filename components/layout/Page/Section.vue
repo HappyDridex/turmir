@@ -25,6 +25,10 @@ defineOptions({
     font-weight: $fw-extrabold;
 
     text-align: center;
+
+    @include md {
+      font-size: 28px;
+    }
   }
 
   &__description {
@@ -35,6 +39,12 @@ defineOptions({
     margin-bottom: rem(20px);
 
     text-align: center;
+
+    @include md {
+      font-size: 18px;
+
+      margin-top: rem(18px);
+    }
   }
 }
 </style>

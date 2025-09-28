@@ -42,7 +42,9 @@ const [isMenuOpen, setMenuOpen] = useFlag();
           </NuxtLink>
 
           <span class="header__contacts-address">
-            Офис в г.Ялта: ул. Большевистская, 10, ТЦ «Конфетти», 5 этаж
+            Офис в г.Ялта: ул. Большевистская, 10,
+            <br />
+            ТЦ «Конфетти», 5 этаж
           </span>
         </div>
 
@@ -70,6 +72,22 @@ const [isMenuOpen, setMenuOpen] = useFlag();
           theme="secondary"
           bold="semibold"
         />
+
+        <div class="header__phone">
+          <NuxtLink
+            :to="`tel:${PHONE.value}`"
+            class="header__phone-link"
+            external
+            target="_blank"
+          >
+            <UiButtonNative class="header__phone-button">
+              <UiIcon
+                name="phone"
+                size="small"
+              />
+            </UiButtonNative>
+          </NuxtLink>
+        </div>
 
         <UiButtonNative
           class="header__burger"
@@ -147,6 +165,13 @@ const [isMenuOpen, setMenuOpen] = useFlag();
   }
 
   &__logo {
+    width: rem(200px);
+    height: auto;
+
+    @include sm {
+      width: rem(140px);
+    }
+
     &-pic {
       filter: invert(1);
     }
@@ -169,6 +194,10 @@ const [isMenuOpen, setMenuOpen] = useFlag();
     flex-direction: column;
     align-items: flex-end;
 
+    @include md {
+      display: none;
+    }
+
     &-link {
       font-size: rem(18px);
       font-weight: $fw-bold;
@@ -176,12 +205,18 @@ const [isMenuOpen, setMenuOpen] = useFlag();
 
     &-address {
       font-size: 15px;
+      text-align: end;
+
       opacity: 0.5;
     }
   }
 
   &__socials {
     margin-left: rem(20px);
+
+    @include md {
+      display: none;
+    }
 
     &-list {
       display: flex;
@@ -200,6 +235,26 @@ const [isMenuOpen, setMenuOpen] = useFlag();
 
   &__bid {
     margin-left: rem(24px);
+
+    @include md {
+      display: none;
+    }
+  }
+
+  &__phone {
+    display: none;
+
+    @include md {
+      display: block;
+    }
+
+    &-button {
+      padding: 10px;
+
+      color: $txt-col-secondary;
+      background-color: $bg-color-secondary;
+      border-radius: 50%;
+    }
   }
 
   &__burger {

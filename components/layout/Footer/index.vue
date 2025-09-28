@@ -138,8 +138,12 @@ const contacts = [
     transform: translateY(-50%);
 
     max-width: rem(1100px);
-
     padding: 0 rem(20px);
+
+    @include md {
+      max-width: unset;
+      width: 100%;
+    }
 
     &-inner {
       display: flex;
@@ -154,6 +158,14 @@ const contacts = [
       border: 1px solid #e6e6e6;
 
       background-color: #ffffff;
+
+      @include md {
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: 100%;
+        padding: 22px;
+      }
     }
 
     &-item {
@@ -201,13 +213,20 @@ const contacts = [
       }
 
       &:not(:first-child)::before {
-        content: '';
-        width: 1px;
-        height: 30px;
-        background-color: black;
-        opacity: 0.1;
         position: absolute;
         left: 0;
+
+        content: '';
+
+        width: 1px;
+        height: 30px;
+
+        background-color: black;
+        opacity: 0.1;
+
+        @include md {
+          content: none;
+        }
       }
     }
   }
@@ -225,13 +244,22 @@ const contacts = [
 
     row-gap: rem(30px);
 
-    &-title {
-      max-width: rem(500px);
+    @include md {
+      row-gap: rem(16px);
+    }
 
-      text-align: center;
+    &-title {
       font-size: rem(44px);
       font-weight: 800;
       line-height: rem(48px);
+
+      max-width: rem(500px);
+
+      text-align: center;
+
+      @include md {
+        font-size: rem(24px);
+      }
     }
 
     &-icon {
@@ -239,6 +267,11 @@ const contacts = [
 
       width: rem(100px);
       height: rem(100px);
+
+      @include md {
+        width: rem(75px);
+        height: rem(75px);
+      }
 
       &--before {
         left: 0;
@@ -255,6 +288,27 @@ const contacts = [
     width: 100%;
 
     margin-top: rem(90px);
+
+    @include md {
+      margin-top: rem(30px);
+
+      &:deep(.navbar__inner) {
+        flex-wrap: wrap;
+        gap: (30px);
+      }
+
+      &:deep(.navbar-list) {
+        width: calc(50% - 30px / 2);
+      }
+
+      &:deep(.navbar-list__submenu) {
+        row-gap: rem(16px);
+      }
+
+      &:deep(.navbar-list__link) {
+        font-size: rem(16px);
+      }
+    }
   }
 
   &__copyright {
@@ -264,14 +318,25 @@ const contacts = [
     font-size: rem(18px);
     line-height: rem(30px);
     opacity: 0.6;
+
+    @include md {
+      font-size: 14px;
+
+      width: 100%;
+      margin-top: rem(30px);
+
+      text-align: start;
+    }
   }
 
   &__org {
-    text-align: center;
-
     font-size: rem(18px);
     line-height: rem(30px);
+
+    margin-top: rem(16px);
+
     opacity: 0.6;
+    text-align: center;
   }
 }
 </style>
