@@ -65,6 +65,7 @@ const { setTourRequestOpen } = useTourRequestPopup();
 <style scoped lang="scss">
 .home-match-tour {
   position: relative;
+
   &__main {
     position: relative;
 
@@ -175,6 +176,7 @@ const { setTourRequestOpen } = useTourRequestPopup();
     justify-content: center;
 
     width: auto;
+    max-width: max-content;
     height: auto;
 
     @include md {

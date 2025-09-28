@@ -122,6 +122,8 @@ const { setTourRequestOpen } = useTourRequestPopup();
     width: 100%;
     height: 656px;
 
+    overflow: hidden;
+
     &-inner {
       position: absolute;
       top: 0;
@@ -159,6 +161,7 @@ const { setTourRequestOpen } = useTourRequestPopup();
       &--3 {
         background-image: url('/_static/images/cloud-3.png');
         width: 342px;
+        max-width: 100%;
         height: 117px;
         top: 159px;
         right: 0;

@@ -66,7 +66,7 @@ const teams = [
   row-gap: rem(48px);
 
   &__items {
-    width: 100%;
+    max-width: 100%;
   }
 
   &__item {
