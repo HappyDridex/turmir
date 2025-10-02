@@ -75,9 +75,6 @@ const agentServices = [
     align-items: center;
 
     column-gap: rem(20px);
-
-    @include md {
-    }
   }
 
   &__pictures {
