@@ -66,12 +66,12 @@ const about = computed(() => [
   },
   {
     text: 'О нас',
+    to: {
+      name: 'about',
+    },
   },
   {
     text: 'Команда',
-    to: {
-      name: 'team',
-    },
   },
 ]);
 

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 defineOptions({
-  name: 'AboutTeam',
+  name: 'AboutCompany',
 });
 
 definePageMeta({
-  name: 'team',
+  name: 'about',
 });
 </script>
 
 <template>
   <div class="team-page">
-    <ViewAboutTeams class="team-page__team" />
+    <ViewAboutAgent class="team-page__agent" />
 
     <ViewAboutFeedback class="team-page__feedback" />
 
@@ -22,12 +22,12 @@ definePageMeta({
 
 <style lang="scss" scoped>
 .team-page {
-  &__team {
-    margin-top: rem(60px);
+  &__agent {
+    margin-top: rem(30px);
   }
 
   &__feedback {
-    margin-top: rem(50px);
+    margin-top: rem(90px);
   }
 
   &__match {

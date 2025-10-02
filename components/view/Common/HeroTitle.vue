@@ -24,6 +24,9 @@ defineOptions({
 .hero-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
 
   &__icon {
     &-pic {
