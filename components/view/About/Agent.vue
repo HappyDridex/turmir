@@ -39,12 +39,10 @@ const agentServices = [
             v-for="service in agentServices"
             class="agent__description-list-item"
           >
-            <ClientOnly>
-              <UiLottie
-                class="agent__description-list-item-img"
-                :data="service.lottie"
-              />
-            </ClientOnly>
+            <UiLottie
+              class="agent__description-list-item-img"
+              :data="service.lottie"
+            />
 
             <p>
               {{ service.text }}

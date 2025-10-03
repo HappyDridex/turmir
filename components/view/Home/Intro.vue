@@ -76,12 +76,10 @@ const STEPS = [
           class="home-intro__steps-item"
         >
           <div class="home-intro__steps-item-inner">
-            <ClientOnly>
-              <UiLottie
-                class="home-intro__steps-item-img"
-                :data="step.lottie"
-              />
-            </ClientOnly>
+            <UiLottie
+              class="home-intro__steps-item-img"
+              :data="step.lottie"
+            />
 
             <span class="home-intro__steps-item-text">
               {{ step.text }}

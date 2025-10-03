@@ -58,13 +58,11 @@ defineOptions({
                   src="/_static/images/logo.png"
                 />
 
-                <ClientOnly>
-                  <UiLottie
-                    class="home-subscribe__main-mocks-item-lottie"
-                    :class="`home-subscribe__main-mocks-item-lottie--${item}`"
-                    :data="planeJson"
-                  />
-                </ClientOnly>
+                <UiLottie
+                  class="home-subscribe__main-mocks-item-lottie"
+                  :class="`home-subscribe__main-mocks-item-lottie--${item}`"
+                  :data="planeJson"
+                />
               </div>
 
               <NuxtImg
@@ -82,9 +80,6 @@ defineOptions({
 
 <style scoped lang="scss">
 .home-subscribe {
-  &__inner {
-  }
-
   &__image {
     display: flex;
     justify-content: center;

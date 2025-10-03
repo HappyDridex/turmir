@@ -8,7 +8,9 @@ const { isTourRequestOpen } = useTourRequestPopup();
 
 <template>
   <div class="layout-default">
-    <LayoutHeader />
+    <LayoutLoader class="layout-default__loader" />
+
+    <LayoutHeader class="layout-default__header" />
 
     <div class="layout-default__page">
       <NuxtPage />
