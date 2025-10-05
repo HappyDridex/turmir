@@ -63,7 +63,7 @@ const STEPS = [
 
     <ClientOnly>
       <div
-        style="width: 100%"
+        style="width: 100%; overflow-x: hidden"
         data-sletat-module-id="b941e824-130a-4e3f-88aa-3ed1af929b82"
       />
     </ClientOnly>

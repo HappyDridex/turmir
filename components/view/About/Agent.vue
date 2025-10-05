@@ -32,7 +32,10 @@ const agentServices = [
       </div>
 
       <div class="agent__description">
-        <h2 class="agent__description-title">Привет! Я Мишель 👋</h2>
+        <h2 class="agent__description-title">
+          Привет! <br />
+          Я Мишель 👋
+        </h2>
 
         <ul class="agent__description-list">
           <li
@@ -44,7 +47,7 @@ const agentServices = [
               :data="service.lottie"
             />
 
-            <p>
+            <p class="agent__description-list-item-text">
               {{ service.text }}
             </p>
           </li>
@@ -107,7 +110,7 @@ const agentServices = [
 
     width: 50%;
 
-    padding: rem(56px);
+    padding: rem(44px) rem(56px);
 
     row-gap: rem(40px);
 
@@ -121,7 +124,7 @@ const agentServices = [
     &-title {
       text-align: center;
 
-      font-size: 32px;
+      font-size: rem(28px);
       font-weight: $fw-extrabold;
     }
 
@@ -141,6 +144,8 @@ const agentServices = [
         font-size: rem(22px);
 
         @include sm {
+          text-align: center;
+
           flex-direction: column;
         }
 

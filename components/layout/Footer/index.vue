@@ -260,6 +260,10 @@ const contacts = [
       @include md {
         font-size: rem(24px);
       }
+
+      @include sm {
+        font-size: rem(20px);
+      }
     }
 
     &-icon {
