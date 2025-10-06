@@ -22,6 +22,10 @@ const { isTourRequestOpen } = useTourRequestPopup();
       v-model="isTourRequestOpen"
       class="header__tour-request"
     />
+
+    <ClientOnly>
+      <ViewCommonCookieNotification />
+    </ClientOnly>
   </div>
 </template>
 

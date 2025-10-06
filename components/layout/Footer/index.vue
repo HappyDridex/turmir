@@ -335,8 +335,6 @@ const contacts = [
 
       width: 100%;
       margin-top: rem(30px);
-
-      text-align: start;
     }
   }
 

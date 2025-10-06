@@ -13,65 +13,13 @@ const emit = defineEmits<{
   'link:click': [];
 }>();
 
-const isVertical = computed(() => type === 'vertical');
-
-const main = [
-  {
-    text: 'Подбор тура',
-    bold: true,
-  },
-  {
-    text: 'Горящие туры',
-    bold: true,
-  },
-  {
-    text: 'Минимальные цены',
-    bold: true,
-  },
-  {
-    text: 'Страны',
-    bold: true,
-  },
-  {
-    text: 'Календарь туров',
-    bold: true,
-  },
-];
-
-const services = computed(() => [
-  {
-    text: 'Наши услуги',
-    bold: true,
-    title: isVertical.value,
-  },
-  {
-    text: 'Авиабилеты',
-  },
-  {
-    text: 'Визы',
-  },
-  {
-    text: 'Круизы',
-  },
-  {
-    text: 'Подбор отеля',
-  },
-]);
-
 const about = computed(() => [
-  {
-    text: 'О компании',
-    bold: true,
-    title: isVertical.value,
-  },
   {
     text: 'О нас',
     to: {
       name: 'about',
     },
-  },
-  {
-    text: 'Команда',
+    bold: true,
   },
 ]);
 
@@ -100,18 +48,8 @@ const contacts = [
 
 const allSection = computed(() => [
   {
-    key: 'main',
-    routes: main,
-  },
-  {
-    key: 'services',
-    routes: services.value,
-    expandable: isVertical.value,
-  },
-  {
     key: 'about',
     routes: about.value,
-    expandable: isVertical.value,
   },
   {
     key: 'contacts',
@@ -132,7 +70,6 @@ const allSection = computed(() => [
         class="navbar__section"
         :class="[section.key]"
         :items="section.routes"
-        :expandable="section.expandable"
         @link:click="emit('link:click')"
       />
     </nav>
@@ -153,7 +90,7 @@ const allSection = computed(() => [
 
     &.horizontal {
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: space-evenly;
 
       .navbar__section {
         padding: 0 rem(20px);
