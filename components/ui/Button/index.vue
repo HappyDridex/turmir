@@ -8,6 +8,7 @@ const {
   theme = 'primary',
   tag = undefined,
   bold = 'regular',
+  disabled = false,
 } = defineProps<{
   text?: string;
   theme?: 'primary' | 'secondary' | 'transparent';
@@ -15,6 +16,7 @@ const {
   tag?: string;
   loading?: boolean;
   bold?: 'regular' | 'medium' | 'semibold' | 'bold';
+  disabled?: boolean;
 }>();
 
 const UiButtonNative = resolveComponent('UiButtonNative');
@@ -26,7 +28,8 @@ const buttonTag = tag ?? UiButtonNative;
   <component
     :is="buttonTag"
     class="base-button"
-    :class="[theme, { full, loading }]"
+    :class="[theme, { full, loading, disabled }]"
+    :disabled="disabled"
   >
     <slot name="pre" />
 
@@ -58,7 +61,7 @@ const buttonTag = tag ?? UiButtonNative;
 
   border-radius: rem(36px);
 
-  &:active {
+  &:active:not(:disabled) {
     transform: scale(0.95);
   }
 
@@ -153,6 +156,10 @@ const buttonTag = tag ?? UiButtonNative;
     &.bold {
       font-weight: $fw-bold;
     }
+  }
+
+  &.disabled {
+    opacity: 0.5;
   }
 }
 </style>

@@ -3,7 +3,7 @@ defineOptions({
   name: 'ViewHomeMatchTour',
 });
 
-const { setTourRequestOpen } = useTourRequestPopup();
+const { setQuizTourOpen } = useQuizTourPopup();
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const { setTourRequestOpen } = useTourRequestPopup();
         <UiButton
           class="home-match-tour__main-content-btn"
           text="Подобрать тур"
-          @click="setTourRequestOpen"
+          @click="setQuizTourOpen"
         />
       </div>
 

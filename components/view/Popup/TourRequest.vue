@@ -137,14 +137,6 @@ function submitForm() {
 
       color: #2b3f5a;
     }
-
-    &-description {
-      font-size: rem(15px);
-      font-weight: $fw-medium;
-      line-height: rem(22px);
-
-      color: #808c9c;
-    }
   }
 
   &__body {

@@ -6,7 +6,7 @@ defineOptions({
   name: 'ViewAboutAgent',
 });
 
-const { setTourRequestOpen } = useTourRequestPopup();
+const { setQuizTourOpen } = useQuizTourPopup();
 
 const agentServices = [
   {
@@ -56,7 +56,7 @@ const agentServices = [
         <UiButton
           class="agent__description-btn"
           text="Подобрать тур"
-          @click="setTourRequestOpen"
+          @click="setQuizTourOpen"
         />
       </div>
     </div>

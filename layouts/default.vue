@@ -4,6 +4,7 @@ defineOptions({
 });
 
 const { isTourRequestOpen } = useTourRequestPopup();
+const { isQuizTourOpen } = useQuizTourPopup();
 </script>
 
 <template>
@@ -21,6 +22,11 @@ const { isTourRequestOpen } = useTourRequestPopup();
     <ViewPopupTourRequest
       v-model="isTourRequestOpen"
       class="header__tour-request"
+    />
+
+    <ViewPopupQuizTour
+      v-model="isQuizTourOpen"
+      class="header__quiz-tour"
     />
 
     <ClientOnly>
