@@ -62,10 +62,12 @@ const STEPS = [
     </header>
 
     <ClientOnly>
-      <div
-        style="width: 100%; overflow-x: hidden"
-        data-sletat-module-id="b941e824-130a-4e3f-88aa-3ed1af929b82"
-      />
+      <div class="home-intro__module">
+        <div
+          style="width: 100%"
+          data-sletat-module-id="b941e824-130a-4e3f-88aa-3ed1af929b82"
+        />
+      </div>
     </ClientOnly>
 
     <div class="home-intro__main">
@@ -164,6 +166,14 @@ const STEPS = [
           font-size: rem(18px);
         }
       }
+    }
+  }
+
+  &__module {
+    width: 100%;
+
+    @include sm {
+      overflow-x: hidden;
     }
   }
 
