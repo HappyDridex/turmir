@@ -1,17 +1,17 @@
-import { HttpError } from "@/classes/HttpError";
+import { HttpError } from '@/classes/HttpError';
 
 export default defineNuxtPlugin(() => {
   const config = useRuntimeConfig();
 
-  const { apiBase } = config.public;
+  const { apiBaseUrl } = config.public;
 
   const $appFetch = $fetch.create({
-    baseURL: apiBase,
+    baseURL: apiBaseUrl,
 
     onRequestError() {
       throw new HttpError({
         status: 500,
-        message: "Произошла ошибка запроса",
+        message: 'Произошла ошибка запроса',
       });
     },
 
@@ -20,8 +20,8 @@ export default defineNuxtPlugin(() => {
 
       throw new HttpError({
         status: response.status,
-        message: data?.message ?? "Произошла ошибка запроса",
-        details: data?.verbose_message ?? "",
+        message: data?.message ?? 'Произошла ошибка запроса',
+        details: data?.verbose_message ?? '',
       });
     },
   });

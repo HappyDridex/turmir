@@ -19,7 +19,7 @@ export default defineNuxtConfig({
           name: 'description',
           content: '',
         },
-        { name: 'author', content: '' },
+        { name: 'author', content: 'Turmir' },
         { name: 'robots', content: 'index, follow' },
         {
           name: 'yandex-verification',
@@ -30,7 +30,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    public: {},
+    public: {
+      apiBaseUrl: process.env.NUXT_PUBLIC_API_BASE_URL,
+    },
   },
 
   css: ['@/assets/scss/_main.scss'],
@@ -59,16 +61,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
     '@element-plus/nuxt',
     'v-gsap-nuxt',
-    [
-      'nuxt-yandex-metrika',
-      {},
-      //   {
-      //     id: 98651373,
-      //     options: {
-      //       webvisor: true,
-      //     },
-      //   },
-    ],
+    ['nuxt-yandex-metrika', {}],
   ],
 
   viewport: {

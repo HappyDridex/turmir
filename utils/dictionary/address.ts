@@ -14,7 +14,7 @@ const PHONE = {
 const COMPANY = {
   name: 'ООО «СПКА»',
   inn: 'ИНН 9103105724',
-  mail: 'mail@mail.ru',
+  mail: 't.turmir@yandex.ru',
 } as const;
 
 const TG_FEED_CHANNEL_LINK = 'https://t.me/tTurMir';

@@ -8,6 +8,8 @@ const show = defineModel<boolean>({
   default: false,
 });
 
+const { $appFetch } = useNuxtApp();
+
 const quizData = [
   {
     id: 'q1',
@@ -165,7 +167,7 @@ const submit = () => {
 
   callAndHandle({
     req: () => {
-      return $fetch('/form', {
+      return $appFetch('/form', {
         method: 'POST',
         body,
       });

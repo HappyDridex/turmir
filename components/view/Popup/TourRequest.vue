@@ -8,6 +8,7 @@ const show = defineModel<boolean>({
   default: false,
 });
 
+const { $appFetch } = useNuxtApp();
 const { callAndHandle } = useRequest();
 
 const form = reactive({
@@ -25,7 +26,7 @@ const options = [
 function submitForm() {
   callAndHandle({
     req: () => {
-      return $fetch('/form', {
+      return $appFetch('/form', {
         method: 'POST',
         body: form,
       });
