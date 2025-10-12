@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineOptions({
-  name: "UiFormItem",
+  name: 'UiFormItem',
 });
 
 withDefaults(
@@ -13,9 +13,9 @@ withDefaults(
     inputProps?: Record<string, unknown>;
   }>(),
   {
-    type: "text",
+    type: 'text',
     inputProps: () => ({}),
-    inputMode: "text",
+    inputMode: 'text',
     prop: undefined,
     label: undefined,
     placeholder: undefined,
@@ -24,7 +24,7 @@ withDefaults(
 
 const model = defineModel<string | number | null>({
   required: false,
-  default: "",
+  default: '',
 });
 </script>
 

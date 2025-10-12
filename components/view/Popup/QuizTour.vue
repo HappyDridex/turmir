@@ -264,6 +264,8 @@ const onNext = () => {
                 class="quiz-tour__quiz-form-field"
                 placeholder="Ваш телефон"
                 size="large"
+                type="tel"
+                :input-props="{}"
               />
             </UiForm>
           </div>
@@ -271,6 +273,7 @@ const onNext = () => {
 
         <div class="quiz-tour__quiz-actions">
           <UiButton
+            class="quiz-tour__quiz-actions-btn"
             text="Назад"
             theme="secondary"
             :disabled="isFirstQuestion"
@@ -285,6 +288,7 @@ const onNext = () => {
           </p>
 
           <UiButton
+            class="quiz-tour__quiz-actions-btn"
             :text="isQuizCompleted ? 'Отправить' : 'Далее'"
             :disabled="!isCurrentQuestionAnswered"
             @click="onNext"
@@ -307,7 +311,7 @@ const onNext = () => {
 
   @include sm {
     width: calc(100vw - 24px);
-    padding: rem(36px);
+    padding: rem(24px) rem(18px);
   }
 }
 
@@ -332,6 +336,12 @@ const onNext = () => {
       font-weight: $fw-bold;
 
       color: #2b3f5a;
+
+      @include sm {
+        font-size: rem(20px);
+
+        margin-top: rem(16px);
+      }
     }
 
     &-description {
@@ -339,6 +349,10 @@ const onNext = () => {
       font-weight: $fw-medium;
 
       color: #808c9c;
+
+      @include sm {
+        font-size: rem(16px);
+      }
     }
   }
 
@@ -359,7 +373,13 @@ const onNext = () => {
         font-size: rem(20px);
         font-weight: $fw-bold;
 
+        text-align: center;
+
         color: #2b3f5a;
+
+        @include sm {
+          font-size: rem(16px);
+        }
       }
     }
 
@@ -377,6 +397,12 @@ const onNext = () => {
 
           border: rem(1px) solid #{$primary};
           border-radius: rem(8px);
+
+          @include sm {
+            --el-radio-font-size: #{rem(12px)};
+
+            padding: rem(8px);
+          }
         }
       }
     }
@@ -385,6 +411,12 @@ const onNext = () => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      &-btn {
+        @include sm {
+          padding: 10px 12px !important;
+        }
+      }
     }
   }
 }

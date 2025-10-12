@@ -17,10 +17,7 @@ if (import.meta.client) {
 
     <ViewHomeSubscribe />
 
-    <ViewHomeHotTours
-      v-if="false"
-      class="main-page__hot"
-    />
+    <ViewHomeHotTours class="main-page__hot" />
 
     <ViewHomeMatchTour class="main-page__match" />
 
