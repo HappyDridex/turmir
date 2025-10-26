@@ -267,6 +267,23 @@ const onNext = () => {
                 type="tel"
                 :input-props="{}"
               />
+
+              <p>
+                Отправляя запрос, я подтверждаю
+                <a
+                  href="/_static/personal_data.docx
+           "
+                  target="_blank"
+                  >согласие на обработку персональных</a
+                >
+                данных и соглашаюсь с положениями
+                <a
+                  href="/_static/oferta.docx"
+                  target="_blank"
+                  >договора оферты</a
+                >
+                .
+              </p>
             </UiForm>
           </div>
         </div>

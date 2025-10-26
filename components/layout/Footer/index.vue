@@ -104,10 +104,21 @@ const contacts = [
 
       <div class="footer__org">
         <p class="footer__org-personal">
-          Положение об обработке персональных данных
+          <a
+            href="/_static/personal_data.docx
+            "
+            target="_blank"
+            >Положение об обработке персональных данных</a
+          >
         </p>
 
-        <p class="footer__org-politics">Политика конфиденциальности</p>
+        <p class="footer__org-politics">
+          <a
+            href="/_static/oferta.docx"
+            target="_blank"
+            >Договор оферты</a
+          >
+        </p>
       </div>
     </div>
   </footer>
