@@ -23,7 +23,11 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'index, follow' },
         {
           name: 'yandex-verification',
-          content: '',
+          content: '2b2b1c66818785f2',
+        },
+        {
+          name: 'google-site-verification',
+          content: 'OfyOXBc7jkiTo6kEFKa4QLxQV8HGyGhWFNyRI8vHWS0',
         },
       ],
     },
