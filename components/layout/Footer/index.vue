@@ -105,8 +105,7 @@ const contacts = [
       <div class="footer__org">
         <p class="footer__org-personal">
           <a
-            href="/_static/personal_data.docx
-            "
+            href="/"
             target="_blank"
             >Положение об обработке персональных данных</a
           >
@@ -114,7 +113,7 @@ const contacts = [
 
         <p class="footer__org-politics">
           <a
-            href="/_static/oferta.docx"
+            href="/"
             target="_blank"
             >Договор оферты</a
           >

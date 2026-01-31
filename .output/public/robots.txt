@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /_ipx/
+Disallow: /_nuxt/
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /*?*
+Disallow: /_static
+Disallow: /schema
+
+Sitemap: https://turmir.online/sitemap.xml

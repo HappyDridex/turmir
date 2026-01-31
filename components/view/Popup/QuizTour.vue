@@ -271,14 +271,14 @@ const onNext = () => {
               <p>
                 Отправляя запрос, я подтверждаю
                 <a
-                  href="/_static/personal_data.docx
+                  href="/"
            "
                   target="_blank"
                   >согласие на обработку персональных</a
                 >
                 данных и соглашаюсь с положениями
                 <a
-                  href="/_static/oferta.docx"
+                  href="/"
                   target="_blank"
                   >договора оферты</a
                 >
