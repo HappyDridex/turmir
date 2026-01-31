@@ -1,0 +1,2 @@
+const t={city:"респ. Крым, г. Ялта",street:"ул. Сосновая, д. 23",full(){return`${this.city}, 
+${this.street}`}},e={label:"+7 (978) 316-85-30",value:"+79783168530"},s={mail:"t.turmir@yandex.ru"},i="https://t.me/tTurMir",a=[{name:"telegram",icon:"tg-circled",link:"https://t.me/MishelTur"},{name:"vk",icon:"vk-circled",link:"https://vk.com/tturmir"},{name:"whatsapp",icon:"wa-circled",link:"https://wa.me/79783168530"}];export{t as A,s as C,e as P,a as S,i as T};
